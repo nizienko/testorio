@@ -11,4 +11,5 @@ import java.util.Set;
 public interface Action extends Runnable{
     void init(Map<String, String> settings, Event event);
     Set<String> getParameters();
+    Set<String> getProducedEvents();
 }

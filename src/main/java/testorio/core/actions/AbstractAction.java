@@ -13,6 +13,7 @@ public abstract class AbstractAction implements Action {
     protected Map<String, String> settings;
     protected Event event;
     protected Set<String> parameters = new HashSet<>();
+    protected Set<String> producedEvents = new HashSet<>();
 
     @Override
     public void init(Map<String, String> settings, Event event) {
@@ -23,5 +24,15 @@ public abstract class AbstractAction implements Action {
     @Override
     public Set<String> getParameters() {
         return parameters;
+    }
+
+    @Override
+    public Set<String> getProducedEvents() {
+        return producedEvents;
+    }
+
+    public Action addProducedEvent(String eventType){
+        producedEvents.add(eventType);
+        return this;
     }
 }

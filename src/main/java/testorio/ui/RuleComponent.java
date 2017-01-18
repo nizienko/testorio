@@ -18,12 +18,13 @@ public class RuleComponent extends HorizontalLayout {
 
     public RuleComponent(Rule rule, ApplicationContext context) {
         this.rule = rule;
-        final Label nameLabel = new Label(rule.toString());
-        nameLabel.setSizeFull();
-        this.addComponent(nameLabel);
 
         final RuleStorage ruleStorage = (RuleStorage)context.getBean("ruleStorage");
         final Action action = (Action) context.getBean(rule.getAction());
+
+        final Label nameLabel = new Label(rule.toString() + " ->" + action.getProducedEvents());
+        nameLabel.setSizeFull();
+        this.addComponent(nameLabel);
 
         final CheckBox activeSwitcher = new CheckBox("Active");
         activeSwitcher.setValue(rule.isActive());
